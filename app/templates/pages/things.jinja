@@ -16,7 +16,7 @@
 
 {% block content %}
 
-    <h1>Things...</h1>
+    <h1>Tasks...</h1>
 
 
     <article>
@@ -42,26 +42,26 @@
 
     <article>
 
-        <h3>Add a New Thing...</h3>
+        <h3>Add a New Task...</h3>
 
         <form action="/add" method="POST">
 
             <input
                 type="text"
                 name="name"
-                placeholder="Name of new thing"
+                placeholder="Name of new task"
                 required
             >
 
             <input
                 type="number"
-                name="price"
+                name="priority"
                 min="0"
-                placeholder="Price in dollars"
+                placeholder="Priority of new task, 1-5"
                 required
             >
 
-            <button>Add the Thing</button>
+            <button>Add the Task</button>
 
         </form>
 

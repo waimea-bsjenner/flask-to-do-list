@@ -4,11 +4,15 @@
 
 from flask import Flask, render_template, request, flash, redirect
 import html
-
+import os
 from app.helpers.session import init_session
 from app.helpers.db import connect_db
 from app.helpers.errors import register_error_handlers, not_found_error
+from dotenv import load_dotenv
 
+load_dotenv()
+TURSO_URL = os.getenv("TURSO_URL")
+TURSO_KEY = os.getenv("TURSO_KEY")
 
 # Create the app
 app = Flask(__name__)
@@ -43,7 +47,7 @@ def about():
 def show_all_things():
     with connect_db() as client:
         # Get all the things from the DB
-        sql = "SELECT id, name FROM things ORDER BY name ASC"
+        sql = "SELECT id, name FROM tasks ORDER BY name ASC"
         result = client.execute(sql)
         things = result.rows
 
@@ -58,7 +62,7 @@ def show_all_things():
 def show_one_thing(id):
     with connect_db() as client:
         # Get the thing details from the DB
-        sql = "SELECT id, name, price FROM things WHERE id=?"
+        sql = "SELECT id, name, price FROM tasks WHERE id=?"
         values = [id]
         result = client.execute(sql, values)
 
