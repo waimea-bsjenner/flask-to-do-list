@@ -42,7 +42,7 @@ This is template for a simple [Flask](https://flask.palletsprojects.com) applica
 The database used for this demo has the following schema:
 
 ```sql
-CREATE TABLE `things` (
+CREATE TABLE `tasks` (
     `id`         INTEGER PRIMARY KEY AUTOINCREMENT,
     `name`       TEXT    NOT NULL,
     `price`      INTEGER NOT NULL DEFAULT 0

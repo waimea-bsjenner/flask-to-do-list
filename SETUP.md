@@ -63,7 +63,7 @@ You should also have the following (just to n=make life better):
 
 If you are returning to your project, you do not need to recreate your virtual environment, just activate and update it.
 
-*Note: If using __VS Code__ as mentioned above, VS Code will __automatically__ activate the environment as time you open its Terminal, and you don't need to do anything.*
+*Note: If using __VS Code__ as mentioned above, VS Code will __automatically__ activate the environment as time you open its Terminal, and you don't need to do anytask.*
 
 
 ### Launching the Server Locally
@@ -162,5 +162,5 @@ In the Render dashboard:
 
 ### Updating the Deployed App
 
-Every time you **push changes** to your GitHub repo, Render will **automatically re-deploy** the app - there is nothing you need to do.
+Every time you **push changes** to your GitHub repo, Render will **automatically re-deploy** the app - there is notask you need to do.
 

@@ -1,7 +1,7 @@
 {#=====================================================
-  Things list page
-  - List of things passed in as 'things' array
-  - Form for adding a new thing
+  Tasks list page
+  - List of tasks passed in as 'tasks' array
+  - Form for adding a new task
 =====================================================#}
 
 {% extends 'pages/base.jinja' %}
@@ -9,25 +9,26 @@
 
 {% block title %}
 
-    Flask Demo - All Things
+    Flask Demo - All tasks
 
 {% endblock %}
 
 
 {% block content %}
 
-    <h1>Tasks...</h1>
+    <h1>TO DO LIST :DDDDD</h1>
 
 
     <article>
 
         <ul>
-            {% for thing in things %}
+            {% for task in tasks %}
 
                 <li>
-                    <a href="/thing/{{ thing.id }}">
-                        {{ thing.name }}
+                    <a href="/task/{{ task.id }}">
+                        {{ task.name }}
                     </a>
+                    <p>Priority: {{ task.priority }}</p>
                 </li>
 
             {% else %}
@@ -57,8 +58,15 @@
                 type="number"
                 name="priority"
                 min="0"
+                max="6"
                 placeholder="Priority of new task, 1-5"
                 required
+            >
+
+            <input
+                type="text"
+                name="description"
+                placeholder="Description of task (optional)"
             >
 
             <button>Add the Task</button>
