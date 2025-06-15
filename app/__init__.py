@@ -76,23 +76,32 @@ def show_one_task(id):
 def add_a_task():
     # Get the data from the form
     name  = request.form.get("name")
-    price = request.form.get("price")
+    priority = request.form.get("priority")
+    description = request.form.get("description")
 
     # Sanitise the inputs
     name = html.escape(name)
-    price = html.escape(price)
-
+    priority = html.escape(priority)
+    description = html.escape(description)
     with connect_db() as client:
+
         # Add the task to the DB
-        sql = "INSERT INTO tasks (name, price) VALUES (?, ?)"
-        values = [name, price]
+        sql = "INSERT INTO tasks (name, priority, description) VALUES (?, ?, ?)"
+        values = [name, priority, description]
         client.execute(sql, values)
 
         # Go back to the home page
         flash(f"task '{name}' added", "success")
-        return redirect("/tasks")
+        return redirect("/")
 
 
+#-----------------------------------------------------------
+# Route for completing a task
+#-----------------------------------------------------------
+@app.get("/complete/<int:id>")
+def complete(id):
+    with connect_db() as client:
+        sql = "UPDATE complete FROM tasks WHERE id=?"
 #-----------------------------------------------------------
 # Route for deleting a task, Id given in the route
 #-----------------------------------------------------------
@@ -106,6 +115,6 @@ def delete_a_task(id):
 
         # Go back to the home page
         flash("task deleted", "warning")
-        return redirect("/tasks")
+        return redirect("/")
 
 
