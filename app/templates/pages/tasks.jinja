@@ -57,15 +57,21 @@
         <ul>
             {% for task in tasks %}
 
-                <li class="task">
-                    <a href="/task/{{ task.id }}">{{ task.name }}</a>
-                    <p>Priority: {{ task.priority }}</p>
-                    {% if complete == 1:%}
-                        <a role="button" href="/incomplete/{{ task.id }}">Incomplete</a>
-                    {% else: %}
-                        <a role="button" href="/complete/{{ task.id }}">Complete</a>
-                    {% endif %}
-                </li>
+                <div class="task">
+                    <span>
+                        <a href="/task/{{ task.id }}">{{ task.name }}</a>
+                    </span>
+                    <span>
+                        <p class="priority{{task.priority}}">Priority: {{ task.priority }}</p>
+                    </span>
+                    <span>
+                        {% if task.complete %}
+                            <a href="/incomplete/{{ task.id }}">Incomplete</a>
+                        {% else: %}
+                            <a role="button" href="/complete/{{ task.id }}">Complete</a>
+                        {% endif %}
+                    </span>
+                </div>
 
             {% else %}
 

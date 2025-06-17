@@ -36,3 +36,32 @@
 .task {
     display: flex;
 }
+
+span {
+    margin: auto;
+}
+
+.priority1 {
+    color: green;
+}
+
+.priority2 {
+    color: greenyellow;
+}
+
+.priority3 {
+    color: yellow;
+}
+
+.priority4 {
+    color: orange;
+}
+
+.priority5 {
+    color: orangered;
+}
+
+.priority6 {
+    color: red;
+    font-size: 30px
+}

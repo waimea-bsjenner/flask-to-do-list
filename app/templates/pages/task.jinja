@@ -30,6 +30,17 @@
         <h3>Description of task:</h3>
 
         <p>{{ task.description }}</p>
+        <form action="/priority/{{ task.id }}" method="POST">
+            <input
+                name="priority"
+                type="number"
+                max="6"
+                min="1"
+                placeholder="Update task priority?"
+            >
+
+            <button>Update?</button>
+        </form>
 
         <footer>
             <a href="/delete/{{ task.id }}" onclick="return confirm('Really delete?');">Delete</a>

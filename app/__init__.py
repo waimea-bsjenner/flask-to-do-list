@@ -101,7 +101,22 @@ def add_a_task():
 @app.get("/complete/<int:id>")
 def complete(id):
     with connect_db() as client:
-        sql = "UPDATE complete FROM tasks WHERE id=?"
+        sql = "UPDATE tasks SET complete = 1 WHERE id=?"
+        values = [id]
+        client.execute(sql, values)
+        return redirect("/")
+    
+#-----------------------------------------------------------
+# Route for incompleting a task
+#-----------------------------------------------------------
+@app.get("/incomplete/<int:id>")
+def incomplete(id):
+    with connect_db() as client:
+        sql = "UPDATE tasks SET complete = 0 WHERE id=?"
+        values = [id]
+        client.execute(sql, values)
+        return redirect("/")
+
 #-----------------------------------------------------------
 # Route for deleting a task, Id given in the route
 #-----------------------------------------------------------
@@ -117,4 +132,14 @@ def delete_a_task(id):
         flash("task deleted", "warning")
         return redirect("/")
 
-
+#-----------------------------------------------------------
+# Route for updating priority
+#-----------------------------------------------------------
+@app.post("/priority/<int:id>")
+def priority(id):
+        priority = request.form.get("priority")
+        with connect_db() as client:
+            sql = "UPDATE tasks SET priority = ? WHERE id = ?"
+            values = [priority, id]
+            client.execute(sql, values)
+            return redirect("/")
