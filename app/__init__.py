@@ -142,4 +142,4 @@ def priority(id):
             sql = "UPDATE tasks SET priority = ? WHERE id = ?"
             values = [priority, id]
             client.execute(sql, values)
-            return redirect("/")
+            return redirect(f"/task/{id}")

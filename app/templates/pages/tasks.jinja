@@ -55,29 +55,32 @@
     <article>
 
         <ul>
-            {% for task in tasks %}
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Task</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Complete</th>
+                    </tr>
+                </thead>
+                {% for task in tasks %}
+                    <tbody>
+                        <tr>
+                            <th scope="col"><a href="task/{{task.id}}">{{task.name}}</a></th>
+                            <td class="priority{{task.priority}}">{{task.priority}}</td>
+                            {% if task.complete %}
+                                <td><a href="/incomplete/{{task.id}}">Incomplete</a></td>
+                            {% else %}
+                                <td><a href="/complete/{{task.id}}" role="button">Complete</a></td>
+                            {% endif %}
+                        </tr>                    
+                    </tbody>
+                {% else %}
 
-                <div class="task">
-                    <span>
-                        <a href="/task/{{ task.id }}">{{ task.name }}</a>
-                    </span>
-                    <span>
-                        <p class="priority{{task.priority}}">Priority: {{ task.priority }}</p>
-                    </span>
-                    <span>
-                        {% if task.complete %}
-                            <a href="/incomplete/{{ task.id }}">Incomplete</a>
-                        {% else: %}
-                            <a role="button" href="/complete/{{ task.id }}">Complete</a>
-                        {% endif %}
-                    </span>
-                </div>
+                    <p>None!</p>
 
-            {% else %}
-
-                <p>None!</p>
-
-            {% endfor %}
+                {% endfor %}
+            </table>
         </ul>
 
     </article>
